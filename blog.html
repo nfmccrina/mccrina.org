@@ -23,6 +23,38 @@
             <p><a href="http://fly-casual.net/">fly-casual.net</a></p>
         </nav>
     
+		<article id="blog_post3" class="blog_post">
+            <header>
+                <h1>TuxedoCat Update: GitHub repository online</h1>
+                <p class="blog_post_author">by Nathan McCrina</p>
+                <time datetime="2015-07-24 23:00">24 July, 2015</time>
+            </header>
+            <section>
+                <p>
+				Work on TuxedoCat has been progressing. I experimented with a
+				multi-threaded approach where the main thread would mostly poll
+				for input from the GUI and a worker thread would handle all of
+				the actual engine calculation. While using multiple threads
+				will theoretically improve performance drastically, that is
+				only if I actually knew how to implement threads with any
+				degree of skill. After some mucking about with mutexes and
+				semaphores and other exotic creatures, I eventually decided to
+				simply keep everything in one thread. This decision is in line
+				with the spirit of this project as a whole, which is that it
+				is better to have a working but sub-optimal program than no
+				program at all.
+				</p>
+				<p>
+				Anyway, I have gotten far enough along that I figured I should
+				go ahead and put the code online. TuxedoCat doesn't play chess yet,
+				but it's getting big enough that some kind of version control
+				is necessary for my own sanity. Therefore, the code is now
+				online at <a href="https://github.com/nfmccrina/TuxedoCat">GitHub</a>.
+				As a side effect, you can now look through it if you feel like it.
+				</p>
+            </section>
+        </article>
+	
 		<article id="blog_post2" class="blog_post">
             <header>
                 <h1>New Website Update</h1>
