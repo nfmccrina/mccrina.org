@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Nathan McCrina's Enigma Page</title>
+        <link rel="stylesheet" href="../css/enigma.css" />
+        
+        <script src="../scripts/jquery-2.0.3.js"></script>
+        <script src="../scripts/enigma.js"></script>
+    </head>
+
+    <body>
+        <p><a href="../index.html">Home</a> -&gt; Enigma Machine</p>
+        <img id="reichsadler" src="../media/reichsadler.png" height="150" width="120" />
+        <div id="model-select">
+            <p>Enigma model:</p>
+            <select name="model_select">
+            </select>
+        </div>
+        <div id="right-rotor">
+            <p>Right rotor:</p>
+            <select name="right_rotor_select">
+            </select>
+            <p>Position:</p><input value="0" name="right_rotor_position" /><button name="right_position_dec">&lt;</button><button name="right_position_inc">&gt;</button>
+            <p>Ring setting:</p><input value="0" name="right_rotor_ring" /><button name="right_ring_dec">&lt;</button><button name="right_ring_inc">&gt;</button>
+        </div>
+        <div id="middle-rotor">
+            <p>Middle rotor:</p>
+            <select name="middle_rotor_select">
+            </select>
+            <p>Position:</p><input value="0" name="middle_rotor_position" /><button name="middle_position_dec">&lt;</button><button name="middle_position_inc">&gt;</button>
+            <p>Ring setting:</p><input value="0" name="middle_rotor_ring" /><button name="middle_ring_dec">&lt;</button><button name="middle_ring_inc">&gt;</button>
+        </div>
+        <div id="left-rotor">
+            <p>Left rotor:</p>
+            <select name="left_rotor_select">
+            </select>
+            <p>Position:</p><input value="0" name="left_rotor_position" /><button name="left_position_dec">&lt;</button><button name="left_position_inc">&gt;</button>
+            <p>Ring setting:</p><input value="0" name="left_rotor_ring" /><button name="left_ring_dec">&lt;</button><button name="left_ring_inc">&gt;</button>
+        </div>
+        <div id="fourth-rotor">
+            <p>Fourth rotor:</p>
+            <select name="fourth_rotor_select">
+            </select>
+            <p>Position:</p><input value="0" name="fourth_rotor_position" /><button name="fourth_position_dec">&lt;</button><button name="fourth_position_inc">&gt;</button>
+            <p>Ring setting:</p><input value="0" name="fourth_rotor_ring" /><button name="fourth_ring_dec">&lt;</button><button name="fourth_ring_inc">&gt;</button>
+        </div>
+        <div id="reflector">
+            <p>Reflector:</p>
+            <select name="reflector_select">
+            </select>
+        </div>
+		<div id="plugboard">
+        <p>Plugboard:</p>
+        <input name="plug-1-first"></input><input name="plug-1-second"></input><br />
+        <input name="plug-2-first"></input><input name="plug-2-second"></input><br />
+        <input name="plug-3-first"></input><input name="plug-3-second"></input><br />
+        <input name="plug-4-first"></input><input name="plug-4-second"></input><br />
+        <input name="plug-5-first"></input><input name="plug-5-second"></input><br />
+        <input name="plug-6-first"></input><input name="plug-6-second"></input><br />
+        <input name="plug-7-first"></input><input name="plug-7-second"></input><br />
+        <input name="plug-8-first"></input><input name="plug-8-second"></input><br />
+        <input name="plug-9-first"></input><input name="plug-9-second"></input><br />
+        <input name="plug-10-first"></input><input name="plug-10-second"></input>
+        </div>
+        <div id="keyboard">
+			<div id="row-1">
+				<button name="q-button">Q</button>
+				<button name="w-button">W</button>
+				<button name="e-button">E</button>
+				<button name="r-button">R</button>
+				<button name="t-button">T</button>
+				<button name="z-button">Z</button>
+				<button name="u-button">U</button>
+				<button name="i-button">I</button>
+				<button name="o-button">O</button>
+			</div>
+			<div id="row-2">
+				<button name="a-button">A</button>
+				<button name="s-button">S</button>
+				<button name="d-button">D</button>
+				<button name="f-button">F</button>
+				<button name="g-button">G</button>
+				<button name="h-button">H</button>
+				<button name="j-button">J</button>
+				<button name="k-button">K</button>
+			</div>
+            <div id="row-3">
+				<button name="p-button">P</button>
+				<button name="y-button">Y</button>
+				<button name="x-button">X</button>
+				<button name="c-button">C</button>
+				<button name="v-button">V</button>
+				<button name="b-button">B</button>
+				<button name="n-button">N</button>
+				<button name="m-button">M</button>
+				<button name="l-button">L</button>
+			</div>
+        </div>
+        <div id="output">
+            <p>Output:</p>
+            <textarea name="output-text"></textarea>
+        </div>
+        <div id="reset">
+            <p>Reset machine to initial state:</p>
+            <button name="reset-button">Reset</button>
+        </div>
+		<h1>Enigma Machine Simulator</h1>
+			<h2>Introduction</h2>
+				<p>This is a simulation of the Enigma cipher machine used by the German military in
+				World War II. They were supremely confident in the security of this cipher, and thus
+				it was used for protecting the communications of many different services throughout the war.
+				Little did they know that in many cases the messages were in fact read by the Allies,
+				thanks to the efforts of Polish, French and English cryptographers, some helpful tips
+				garnered from German informers, and some luck!</p>
+				<p>This program currently simulates two different models of the Enigma, the M3 and M4
+				types. The M3 was used by both the Wehrmacht and the Kriegsmarine. The M4 was an improved
+				four-rotor model used exclusively by the Navy, which kept the Allied cryptographers in the
+				dark from February to December 1942 when it was finally broken, and which enabled a
+				temporary resurgence of U-Boat success. There were also other models which made appearances
+				at various times before and during the war, which I would also like to implement but realistically
+                I will probably never get around to it. Also, I know that the eagle is from the German Empire
+                before 1918, but I wanted to add some character and I couldn't very well put in a swastika
+                without dragging in a lot of unrelated baggage so you history purists will just have
+                to put up with it.</p>
+			<h2>Instructions</h2>
+				<p>Basically, you click a letter button, the machine performs a series of permutations on
+				the signal, and an output letter appears. If you have an encrypted message you want to
+				read, getting something readable instead of gibberish depends on your machine being in
+				exactly the same state as the machine which did the encrypting. This consists of five 
+				variables, depending on how you look at it: having the correct rotors in place, having
+				identical positions and ring settings applied to the rotors, having the plugboard set
+				up correctly, and choosing the right reflector. All of this information would be agreed
+				on beforehand. An example might be helpful. There are a few examples of real Enigma
+				messages <a href="http://wiki.franklinheath.co.uk/index.php/Enigma/Sample_Messages">
+				on the web</a> which can be used as a demonstration. I will use the Operation Barbarossa
+				message from that page. As you can see, it gives the rotors and reflector in use, the
+				ring settings of the rotors, the plugboard connections, and the initial rotor positions
+				(called the 'message key'). This message was sent using an M3 Enigma, so that's what I
+				will set the model to in the program. Then I will choose 'II' for the left rotor, 'IV'
+				for the middle rotor, and 'V' for the right rotor, and choose 'B' for the reflector.
+				'B' is the starting position for the left rotor, 'L' for the middle, and 'A' for the right.
+				Similarly, the ring settings are, respectively, 'B' (since B is the second letter), 'U',
+				and 'L'. Finally, in the plugboard section I enter 'A' and 'V' across from each other,
+				then on the next line I put 'B' and 'L', and so on. Now I simply start entering the
+				ciphertext, starting 'E', 'D', 'P' etc. If everything is set up correctly, the plaintext
+				will appear on the output line! Any message can be deciphered according to the same
+				principles. There are many examples of messages across the net, have fun!</p>
+    </body>
+</html>

@@ -1,0 +1,76 @@
+input.light
+{
+	border-radius: 30px;
+	width: 50px;
+	height: 50px;
+}
+
+#game_area
+{
+}
+
+#light_table
+{
+	margin: 0px auto;
+}
+
+#game_window
+{
+}
+
+#game_controls
+{
+	width: 250px;
+	margin: 20px auto;
+}
+
+#clear_button
+{
+}
+
+#randomize_button
+{
+	float: right;
+}
+
+.light0
+{
+	background-color: #000000;
+	color: #F0F0F0;
+}
+
+.light1
+{
+	background-color: #102525;
+	color: #C0C0C0;
+}
+
+.light2
+{
+	background-color: #204A4A;
+	color: #909090;
+}
+
+.light3
+{
+	background-color: #307070;
+	color: #000000;
+}
+
+.light4
+{
+	background-color: #409595;
+	color: #000000;
+}
+
+.light5
+{
+	background-color: #91D0D0;
+	color: #000000;
+}
+
+.light6
+{
+	background-color: #BCE2E2;
+	color: #000000;
+}

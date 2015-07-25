@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Blog | mccrina.org</title>
+        
+        <link rel="stylesheet" href="/css/site.css">
+        
+        <!--[if ie]>
+        <script type="text/javascript" src="/scripts/modernizr-latest.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+        <nav id="navbar">
+            <h1>Site Links</h1>
+            <p><a href="/index.html">Home</a></p>
+            <p><a href="/blog.html">Blog</a></p>
+            <p><a href="/about.html">About</a></p>
+            <p><a href="/enigma/index.html">Enigma Machine</a></p>
+			<p><a href="/lightsout/">Lights Out</a></p>
+            
+            <h1>External Links</h1>
+            <p><a href="http://fly-casual.net/">fly-casual.net</a></p>
+        </nav>
+    
+		<article id="blog_post2" class="blog_post">
+            <header>
+                <h1>New Website Update</h1>
+                <p class="blog_post_author">by Nathan McCrina</p>
+                <time datetime="2015-07-15 22:00">15 July, 2015</time>
+            </header>
+            <section>
+                <p>
+				Hello there. I am happy to announce that there is a shiny new toy on the website,
+				a radical, groundbreaking version of the popular (?) "Lights Out" game from the 1990s
+				<a href="https://en.wikipedia.org/wiki/Lights_Out_(game)">(link)</a>. Originally
+				each cell in a 5x5 grid was either "on" or "off", and through manipulating the
+				lights you were supposed to turn the board entirely off. My version uses seven
+				different states for each cell instead of only two. It's actually supposed to
+				help illustrate a talk my wife Elizabeth is giving on solving the game in
+				a general case using linear algebra. You can access the game using the "Lights Out"
+				link on the left of the page.
+                </p>
+				<p>
+				I'm continuing to work on TuxedoCat, I've implemented most of the basic UCI commands so
+				for a little bit at least it can fool a GUI into thinking it was talking to an actual
+				chess engine.
+				</p>
+            </section>
+        </article>
+		
+        <article id="blog_post1" class="blog_post">
+            <header>
+                <h1>Back From Hiatus</h1>
+                <p class="blog_post_author">by Nathan McCrina</p>
+                <time datetime="2015-06-25 09:00">25 June, 2015</time>
+            </header>
+            <section>
+                <p>
+                I haven't posted anything on the site for a long time, so I am
+                adding a quick synopsis of what I've been up to the last few
+                months. Life goes on, much as it has this past age. I've tried
+                to focus on reading books more, and have been successful but
+                that has meant that there is less free time available for
+                working on computer projects. What with having a job and all.
+                </p>
+                <p>
+                I've started again on my chess engine, TuxedoCat, which still mainly exists in
+                my mind. I originally wrote it in C++, using a
+                <a href="http://chessprogramming.wikispaces.com/Bitboards">bitboard</a> approach
+                for representing the board. I got as far as being able to generate pawn moves,
+                including the initial double-square move and en passant captures, but I decided
+                that having to manipulate the bitboards was getting in the way of understanding
+                the scheme of the engine as a whole, given my lack of experience in chess
+                programming. I figured it would be better to use a more straightforward, though
+                less efficient, board representation and free my limited mental resources for
+                move generation and search algorithms. To that end, I scrapped the C++ code and
+                started again in C# and .NET. Instead of using an array of 64-bit integers to
+                keep track of piece locations and doing lots of complicated bit-twiddling
+                gymnastics, I am using a single 64 element array of Piece objects to represent
+                the board. This has the advantage of simplicity, but it will certainly be slower
+                (I'm not sure how much slower) due to having to constantly loop through the
+                array and perform bounds-checking and it will require more memory because of
+                needing to store lots of Piece objects instead of only a couple of integers.
+                I am fine with this, though, since I think it will be easier to develop search
+                and evaluation algorithms using a conceptually simple board and it's better to
+                have a slow, working chess engine than no chess engine at all. I think it should
+                be possible, after the engine is functional, to go back and re-write some of the
+                computationally expensive parts in C++ and then hook into that from the C# code
+                using P/Invoke if I need to speed it up. I've never done that sort of thing
+                before, but I believe that is doable. So right now I have a Board object which
+                keeps track of all the piece positions, castling rights, en passant target etc.
+                After yesterday I can initialize the board with a
+                <a href="http://chessprogramming.wikispaces.com/Forsyth-Edwards+Notation">FEN</a>
+                string, and I can export any position to it's FEN representation. I also
+                implemented undoing and redoing moves. The next step will be actually applying
+                a new move to the board.
+                </p>
+                <p>
+                I spent some time trying to hack together some sort of blog engine for this
+                site, but I wasn't satisfied with anything I came up with. The problem is that
+                I am trying to adhere to the principle of
+                <a href="http://alistapart.com/article/understandingprogressiveenhancement">
+                progressive enhancement</a>, which basically means delivering the content to the
+                web page first and then jazzing it up with CSS and JavaScript as necessary. This
+                meant that my initial approach of using AJAX to load blog content from an
+                external JSON file wasn't optimal, because if the client didn't have
+                JavaScript enabled they would not receive any content. I've come to the
+                conclusion that correctly following the principle of progressive enhancement
+                necessitates generating all content on the server, and only using client-side
+                code to manipulate the content once it is loaded. This is a problem for me
+                because the only server-side framework I can use with my web host is PHP, which
+                I absolutely despise. So I scrapped the idea of rolling a blog engine and I'm
+                back to writing the HTML by hand. Which isn't really that big of a deal anyway.
+                </p>
+                <p>
+                I apologize again for the long delay in posting. I plan on updating more
+                frequently about my programming adventures in the future. We'll see how that
+                goes!
+                </p>
+            </section>
+        </article>
+        
+        <footer><p><a href="#top">Top of page</a></p></footer>
+    </body>
+</html>
+
